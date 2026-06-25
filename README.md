@@ -26,6 +26,7 @@ Tools & Technologies
 
 # Projects
 Case 001 - SIEM Log Investigation
+
 Case 002 - Enterprise Vulnerability Management
 
 *All work was performed in simulated environments for professional development and training purposes*
