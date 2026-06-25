@@ -24,7 +24,7 @@ Tools & Technologies
 - Ubuntu
 - ServiceNow
 
-#Projects
+# Projects
 Case 001 - SIEM Log Investigation
 Case 002 - Enterprise Vulnerability Management
 
