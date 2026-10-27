@@ -27,6 +27,6 @@ Tools & Technologies
 ## Projects
 Case 001 - SIEM Log Investigation
 
-Case 002 - Enterprise Vulnerability Management
+Case 002 - Alert Triage with Splunk
 
 *All work was performed in simulated environments for professional development and training purposes*
