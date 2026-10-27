@@ -8,7 +8,7 @@ This project documents my experience investigating security alerts using Splunk 
 
 ### Step 1: Receiving the Alert
 
-![Initial Alert](splunk_alert_1.png)
+![Initial Alert](images/splunk_alert_1.png)
 
 After receiving the alert, I first reviewed the information provided to determine what I knew and what needed further investigation.
 
@@ -33,7 +33,7 @@ index="linux-alert" sourcetype="linux_secure" 10.10.242.248
 
 This searches the `linux-alert` index for Linux security events containing the suspicious IP address. It filters the results to show successful logins, failed logins, and invalid username attempts, then arranges them from oldest to newest.
 
-![Initial Search Results](splunk_initial_search_results_1.png)
+![Initial Search Results](images/splunk_initial_search_results_1.png)
 
 **What I Found:**
 
@@ -55,7 +55,7 @@ index="linux-alert" sourcetype="linux_secure" 10.10.242.248
 | stats count values(src_ip) as src_ip values(log_hostname) as hostname values(process) as process by username
 ```
 
-![Login Attempts by Username](splunk_query_2.png)
+![Login Attempts by Username](images/splunk_query_2.png)
 
 This query takes information from SSH login logs and groups the results by username. It counts the matching login events for each account so I can identify which accounts were targeted most frequently.
 
@@ -79,7 +79,7 @@ index="linux-alert" sourcetype="linux_secure" 10.10.242.248
 | stats count values(action) values(src_ip) as src_ip values(log_hostname) as hostname values(process) as process by username
 ```
 
-![Authentication Results](splunk_query_3.png)
+![Authentication Results](images/splunk_query_3.png)
 
 This query is similar to the previous one, but it also shows whether each account had failed or accepted login attempts.
 
@@ -99,7 +99,7 @@ index="linux-alert" sourcetype="linux_secure" 10.10.242.248
 | search action="Accepted"
 ```
 
-![Successful Login Events](splunk_query_4.png)
+![Successful Login Events](images/splunk_query_4.png)
 
 Removing `stats` allows me to view the original log events instead of a summary. Filtering for `Accepted` shows the successful SSH logins.
 
@@ -125,7 +125,7 @@ index="linux-alert" "john.smith"
 
 This searches for logs mentioning `john.smith` after the specified time and displays them chronologically. It helps me follow the account's recorded activity after the successful login.
 
-![Post-Login Activity](splunk_query_5.png)
+![Post-Login Activity](images/splunk_query_5.png)
 
 **What I Found:**
 
